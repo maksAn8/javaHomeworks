@@ -7,7 +7,7 @@ public class Homework_1_2 {
 		Random random = new Random();
 		int a = random.nextInt(100)+1;
 		Homework_1_2 h = new Homework_1_2();
-		System.out.println("Исходные данные "+a);
+		System.out.println("РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ "+a);
 		h.task_1();
 		h.task_2(a);
 		h.task_3(a);
@@ -25,43 +25,43 @@ public class Homework_1_2 {
 				numSum=numSum+i;
 			}
 		}
-		System.out.println("Кол-во чётных чисел = "+numCounter+", их сумма = "+numSum);	
+		System.out.println("РљРѕР»-РІРѕ С‡С‘С‚РЅС‹С… С‡РёСЃРµР» = "+numCounter+", РёС… СЃСѓРјРјР° = "+numSum);	
 	}
 	
 	public void task_2(int a) {
 		for(int i=2; i<=a; i++) {
 			if(a%i==0 && i!=a) {
-				System.out.println("Число составное");
+				System.out.println("Р§РёСЃР»Рѕ СЃРѕСЃС‚Р°РІРЅРѕРµ");
 				return;
 			}
 		}
-		System.out.println("Число простое");	
+		System.out.println("Р§РёСЃР»Рѕ РїСЂРѕСЃС‚РѕРµ");	
 	}
 	
 	public void task_3(int a) {
 		for(int i=1; i<=a/2; i++) {
 			if(i*i==a) {
-				System.out.println("Корень = "+i);
+				System.out.println("РљРѕСЂРµРЅСЊ = "+i);
 				break;
 			}
 			else if(i*i<a && (i+1)*(i+1)>a) {
-				System.out.println("Корень = "+i);
+				System.out.println("РљРѕСЂРµРЅСЊ = "+i);
 				break;
 			}
 		}
 		
-		//бинарный поиск
+		//Р±РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє
 		
-		System.out.println("Бинарный поиск:");
+		System.out.println("Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє:");
 		int firstElement=1;
 		int lastElement=a/2;
-		if(lastElement==0) System.out.println("Корень = "+a);
-		if(lastElement*lastElement==a) System.out.println("Корень = "+lastElement);
+		if(lastElement==0) System.out.println("РљРѕСЂРµРЅСЊ = "+a);
+		if(lastElement*lastElement==a) System.out.println("РљРѕСЂРµРЅСЊ = "+lastElement);
 		while(firstElement<=lastElement) {
 			int middleElement=(firstElement+lastElement)/2;
 			if(middleElement*middleElement==a || 
 					middleElement*middleElement<a && (middleElement+1)*(middleElement+1)>a) {
-				System.out.println("Корень = "+middleElement);
+				System.out.println("РљРѕСЂРµРЅСЊ = "+middleElement);
 				break;
 			}
 			if(middleElement*middleElement>a) lastElement=middleElement;
@@ -87,12 +87,12 @@ public class Homework_1_2 {
 			sum=sum+(a%10);
 			a=a/10;
 		}
-		System.out.println("Сумма цифр числа "+ d +" = "+ sum);
+		System.out.println("РЎСѓРјРјР° С†РёС„СЂ С‡РёСЃР»Р° "+ d +" = "+ sum);
 		return sum;
 	}
 	
 	public void task_6(int a) {
-		System.out.print("Зеркальное отображение числа:");
+		System.out.print("Р—РµСЂРєР°Р»СЊРЅРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ С‡РёСЃР»Р°:");
 		while(a!=0) {
 			int d=(a%10);
 			System.out.print(d);
