@@ -9,7 +9,7 @@ public class Homework_1_1 {
 		int a = random.nextInt(50)-25;
 		int b = random.nextInt(50)-25;
 		int c = random.nextInt(101);
-		System.out.println("Исходные данные: "+a+" "+b+" "+c);
+		System.out.println("РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ: "+a+" "+b+" "+c);
 		h.task_1(a, b);
 		h.task_2(a, b);
 		h.task_3(a, b, c);
@@ -33,17 +33,17 @@ public class Homework_1_1 {
 	
 	public void task_2(int x, int y) {
 		if(x>0) {
-			if(y>0) System.out.println("1-я четверть");
-			else if(y<0) System.out.println("4-я четверть");
-			else System.out.println("Точка на положительной части оси х");
+			if(y>0) System.out.println("1-СЏ С‡РµС‚РІРµСЂС‚СЊ");
+			else if(y<0) System.out.println("4-СЏ С‡РµС‚РІРµСЂС‚СЊ");
+			else System.out.println("РўРѕС‡РєР° РЅР° РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕР№ С‡Р°СЃС‚Рё РѕСЃРё С…");
 		} else if(x<0) {
-			if(y>0) System.out.println("2-я четверть");
-			else if(y<0) System.out.println("3-я четверть");
-			else System.out.println("Точка на отрицательной части оси х");
+			if(y>0) System.out.println("2-СЏ С‡РµС‚РІРµСЂС‚СЊ");
+			else if(y<0) System.out.println("3-СЏ С‡РµС‚РІРµСЂС‚СЊ");
+			else System.out.println("РўРѕС‡РєР° РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№ С‡Р°СЃС‚Рё РѕСЃРё С…");
 		} else {
-			if(y==0) System.out.println("Начало координат");
-			if(y>0) System.out.println("Точка на положительной части оси y");
-			if(y<0) System.out.println("Точка на отрицательной части оси y");
+			if(y==0) System.out.println("РќР°С‡Р°Р»Рѕ РєРѕРѕСЂРґРёРЅР°С‚");
+			if(y>0) System.out.println("РўРѕС‡РєР° РЅР° РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕР№ С‡Р°СЃС‚Рё РѕСЃРё y");
+			if(y<0) System.out.println("РўРѕС‡РєР° РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕР№ С‡Р°СЃС‚Рё РѕСЃРё y");
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class Homework_1_1 {
 		if(b<0) b=0;
 		if(c<0) c=0;
 		int result = a+b+c;
-		System.out.println("Сумма положительных чисел = "+result);
+		System.out.println("РЎСѓРјРјР° РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР» = "+result);
 		return result;
 	}
 	
@@ -71,12 +71,12 @@ public class Homework_1_1 {
 	}
 	
 	public void task_5(int grade) {
-		if(grade>=0 && grade<=19) System.out.println("Оценка F");
-		else if(grade>=20 && grade<=39) System.out.println("Оценка E");
-		else if(grade>=40 && grade<=59) System.out.println("Оценка D");
-		else if(grade>=60 && grade<=74) System.out.println("Оценка C");
-		else if(grade>=75 && grade<=89) System.out.println("Оценка B");
-		else System.out.println("Оценка A");
+		if(grade>=0 && grade<=19) System.out.println("РћС†РµРЅРєР° F");
+		else if(grade>=20 && grade<=39) System.out.println("РћС†РµРЅРєР° E");
+		else if(grade>=40 && grade<=59) System.out.println("РћС†РµРЅРєР° D");
+		else if(grade>=60 && grade<=74) System.out.println("РћС†РµРЅРєР° C");
+		else if(grade>=75 && grade<=89) System.out.println("РћС†РµРЅРєР° B");
+		else System.out.println("РћС†РµРЅРєР° A");
 	}
 
 }
