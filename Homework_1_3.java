@@ -32,8 +32,8 @@ public class Homework_1_3 {
 				indexMax=i;
 			}
 		}
-		System.out.println("Минимальный элемент массива = "+minElement+", его индекс = "+indexMin);
-		System.out.println("Максимальный элемент массива = "+maxElement+", его индекс = "+indexMax);
+		System.out.println("РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° = "+minElement+", РµРіРѕ РёРЅРґРµРєСЃ = "+indexMin);
+		System.out.println("РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° = "+maxElement+", РµРіРѕ РёРЅРґРµРєСЃ = "+indexMax);
 		task_5(arr, length);
 		task_6(arr, length);
 		task_7(arr, length);
@@ -46,7 +46,7 @@ public class Homework_1_3 {
 		for(int i=1; i<=length-1; i+=2) {
 			sum=sum+arr[i];
 		}
-		System.out.println("Сумма элементов массива с нечётными индексами = "+sum);
+		System.out.println("РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° СЃ РЅРµС‡С‘С‚РЅС‹РјРё РёРЅРґРµРєСЃР°РјРё = "+sum);
 	}
 	
 	public void task_6(int arr[], int length) {
@@ -55,7 +55,7 @@ public class Homework_1_3 {
 			arr[i] = arr[length-i-1];
 			arr[length-i-1] = temp;
 		}
-		System.out.print("Реверс массива: ");
+		System.out.print("Р РµРІРµСЂСЃ РјР°СЃСЃРёРІР°: ");
 		printArray(arr, length);
 	}
 	
@@ -64,7 +64,7 @@ public class Homework_1_3 {
 		for(int i = 0; i<length; i++) {
 			if((arr[i]&1)==1) amnt++;
 		}
-		System.out.println("Кол-во нечётных элементов массива = "+amnt);
+		System.out.println("РљРѕР»-РІРѕ РЅРµС‡С‘С‚РЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° = "+amnt);
 	}
 	
 	public void task_8(int arr[], int length) {
@@ -76,7 +76,7 @@ public class Homework_1_3 {
 			arr[i] = arr[c+i];
 			arr[c+i] = temp;
 		}
-		System.out.print("Меняем местами 1-ю и 2-ю половины массива: ");
+		System.out.print("РњРµРЅСЏРµРј РјРµСЃС‚Р°РјРё 1-СЋ Рё 2-СЋ РїРѕР»РѕРІРёРЅС‹ РјР°СЃСЃРёРІР°: ");
 		printArray(arr, length);
 	}
 	
