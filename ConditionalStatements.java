@@ -1,10 +1,10 @@
-public class ConditionalStatements {
-
-	public int getSumOrProduct(int a, int b) {
+public class ConditionalStatements { 
+	
+	public static int getSumOrProduct(int a, int b) {
 		return (a&1) != 1 ? a*b : a+b;
 	}
 	
-	public String getQuadrantByCoordinates(int x, int y) {
+	public static String getQuadrantByCoordinates(int x, int y) {
 		if(x>0) {
 			if(y>0) return "The first quadrant.";
 			else if(y<0) return "The fourth quadrant.";
@@ -19,7 +19,7 @@ public class ConditionalStatements {
 		return "The origin.";
 	}
 	
-	public int getPositiveNumbersSum(int a, int b, int c) {
+	public static int getPositiveNumbersSum(int a, int b, int c) {
 		int result = 0;
 		if(a>0) result += a;
 		if(b>0) result += b;
@@ -27,13 +27,13 @@ public class ConditionalStatements {
 		return result;
 	}
 	
-	public int getMaxBetweenSumAndProduct(int a, int b, int c) {
+	public static int getMaxBetweenSumAndProduct(int a, int b, int c) {
 		int sum = a+b+c, multiply = a*b*c;
 		if(sum > multiply) return sum + 3;
 		else return multiply + 3;
 	}
 	
-	public char getGradeByRating(int rating) {
+	public static char getGradeByRating(int rating) {
 		if(rating < 0 || rating > 100) {
 			throw new IllegalArgumentException("The rating must be in the range of 0-100!");
 		}
