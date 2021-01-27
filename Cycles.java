@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Homework_1_2 {
+public class Cycles {
 
 	
 	public static void main(String args[]) {
