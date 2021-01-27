@@ -13,9 +13,8 @@ public class ConditionalStatements {
 			if(y>0) return "The second quadrant.";
 			else if(y<0) return "The third quadrant.";
 			else return "The point is on the X axis between II and III quadrants.";
-		}
-		if(y>0) return "The point is on the Y axis between I and II quadrants.";
-		if(y<0) return "The point is on the Y axis between III and IV quadrants.";
+		} else if(y>0) return "The point is on the Y axis between I and II quadrants.";
+		else if(y<0) return "The point is on the Y axis between III and IV quadrants.";
 		return "The origin.";
 	}
 	
