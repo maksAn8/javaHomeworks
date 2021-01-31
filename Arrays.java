@@ -1,126 +1,99 @@
-import java.util.Random;
 
 public class Arrays {
 	
-	
-	public static void main(String args[]) {
-		Homework_1_3 h = new Homework_1_3();
-		Random random = new Random();
-		int length = random.nextInt(6)+5;
-		h.task_1_4(length, 1, 100);
-	}
-	
-	public void printArray(int arr[], int length) {
-		for(int i=0; i<length; i++) System.out.print(arr[i]+" ");
-		System.out.println("");
-	}
-	
-	public void task_1_4(int length, int min, int max) {
-		Random random = new Random();
-		int arr[]= new int[length];
+	public static void getMinAndMaxElementsOfArray(int[] array) {
 		int minElement, maxElement, indexMin, indexMax;
-		for(int i=0; i<length; i++) arr[i]=random.nextInt(max-min+1)+min;
-		printArray(arr, length);
-		minElement=maxElement=arr[0];
+		minElement=maxElement=array[0];
 		indexMin=indexMax=0;
-		for(int i=1; i<length; i++) {
-			if(minElement>arr[i]) {
-				minElement=arr[i];
+		for(int i=1; i<array.length; i++) {
+			if(minElement>array[i]) {
+				minElement=array[i];
 				indexMin=i;
-			} else if(maxElement<arr[i]) {
-				maxElement=arr[i];
+			} else if(maxElement<array[i]) {
+				maxElement=array[i];
 				indexMax=i;
 			}
 		}
-		System.out.println("Минимальный элемент массива = "+minElement+", его индекс = "+indexMin);
-		System.out.println("Максимальный элемент массива = "+maxElement+", его индекс = "+indexMax);
-		task_5(arr, length);
-		task_6(arr, length);
-		task_7(arr, length);
-		task_8(arr, length);
-		task_9(arr, length);
+		System.out.println("Minimal element = "+minElement+", its index = "+indexMin);
+		System.out.println("Maximal element = "+maxElement+", its index = "+indexMax);
+		
 	}
 	
-	public void task_5(int arr[], int length) {
+	public static int getSumOfElemetsWithOddIndex(int[] array) {
 		int sum=0;
-		for(int i=1; i<=length-1; i+=2) {
-			sum=sum+arr[i];
-		}
-		System.out.println("Сумма элементов массива с нечётными индексами = "+sum);
+		for(int i=1; i<=array.length-1; i+=2) sum += array[i];
+		return sum;
 	}
 	
-	public void task_6(int arr[], int length) {
-		for(int i=0; i<length/2; i++) {
-			int temp = arr[i];
-			arr[i] = arr[length-i-1];
-			arr[length-i-1] = temp;
+	public static int[] getReversedArray(int[] array) {
+		for(int i=0; i<array.length/2; i++) {
+			int temp = array[i];
+			array[i] = array[array.length-i-1];
+			array[array.length-i-1] = temp;
 		}
-		System.out.print("Реверс массива: ");
-		printArray(arr, length);
+		return array;
 	}
 	
-	public void task_7(int arr[], int length) {
-		int amnt = 0;
-		for(int i = 0; i<length; i++) {
-			if((arr[i]&1)==1) amnt++;
-		}
-		System.out.println("Кол-во нечётных элементов массива = "+amnt);
+	public static int getAmountOfOddElements(int[] array) {
+		int oddElementsCounter = 0;
+		for(int i = 0; i<array.length; i++)
+			if((array[i]&1)==1) oddElementsCounter++;
+		return oddElementsCounter;
 	}
 	
-	public void task_8(int arr[], int length) {
-		int c = 0;
-		if(length%2==0) c = length/2;
-		else c = length/2+1;
-		for(int i=0; i<length/2; i++) {
-			int temp = arr[i];
-			arr[i] = arr[c+i];
-			arr[c+i] = temp;
+	public static int[] toSwapTwoPartsOfArray(int[] array) {
+		int arrayMiddle = 0;
+		if(array.length%2==0) arrayMiddle = array.length/2;
+		else arrayMiddle = array.length/2+1;
+		for(int i=0; i<array.length/2; i++) {
+			int temp = array[i];
+			array[i] = array[arrayMiddle+i];
+			array[arrayMiddle+i] = temp;
 		}
-		System.out.print("Меняем местами 1-ю и 2-ю половины массива: ");
-		printArray(arr, length);
+		return array;
 	}
 	
-	public void task_9(int arr[], int length) {
+	public static int[] bubbleSort(int[] array) {
 		boolean isSorted = false;
 		while(!isSorted) {
 			isSorted=true;
-			for(int i=0; i<length-1; i++) {
-				if(arr[i]>arr[i+1]) {
+			for(int i=0; i<array.length-1; i++) {
+				if(array[i]>array[i+1]) {
 					isSorted = false;
-					int temp = arr[i];
-					arr[i] = arr[i+1];
-					arr[i+1] = temp;
+					int temp = array[i];
+					array[i] = array[i+1];
+					array[i+1] = temp;
 				}
 			}
 		}
-		System.out.print("Bubble: ");
-		printArray(arr, length);
-		
-		for (int left = 0; left < length; left++) {
+		return array;
+	}
+	
+	public static int[] selectionSort(int[] array) {
+		for (int left = 0; left < array.length; left++) {
 			int minIndex = left;
-			for (int i = left; i < length; i++) {
-				if (arr[i] < arr[minIndex]) {
+			for (int i = left; i < array.length; i++) {
+				if (array[i] < array[minIndex]) {
 					minIndex = i;
 				}
 			}
-			int temp = arr[left];
-			arr[left] = arr[minIndex];
-			arr[minIndex] = temp;
+			int temp = array[left];
+			array[left] = array[minIndex];
+			array[minIndex] = temp;
 		}
-		System.out.print("Select: ");
-		printArray(arr, length);
-		
-		for (int left = 1; left < length; left++) {
-			int value = arr[left];
-			int i = left - 1;
-			while (i >= 0 && value<arr[i]) {
-				arr[i + 1] = arr[i];
-			} 
-			arr[i + 1] = value;
-		}
-		System.out.print("Insert: ");
-		printArray(arr, length);
-
+		return array;
 	}
-
+	
+	public static int[] insertionSort(int[] array) {
+		for (int left = 1; left < array.length; left++) {
+			int value = array[left];
+			int i = left - 1;
+			while (i >= 0 && value<array[i]) {
+				array[i + 1] = array[i];
+			} 
+			array[i + 1] = value;
+		}
+		return array;
+	}
+		
 }
