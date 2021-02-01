@@ -1,17 +1,33 @@
-import java.util.Random;
 
 public class Functions {
 	
-	
-	public static void main(String args[]) {
-		Homework_1_4 h = new Homework_1_4();
-		Random random = new Random();
-		int a = random.nextInt(10000);
-		System.out.println("Число "+a);
-		h.ntos(a);
+	public static String getDayNameByNumber(int dayNumber) {
+		if(dayNumber < 1 || dayNumber > 7) {
+			throw new IllegalArgumentException("Day number must be in the range of 1-7!");
+		}
+		switch(dayNumber) {
+		case 2:
+			return "Monday";
+		case 3:
+			return "Tuesday";
+		case 4:
+			return "Wednesday";
+		case 5:
+			return "Thursday";
+		case 6:
+			return "Friday";
+		case 7:
+			return "Saturday";
+		default:
+			return "Sunday";
+		}
 	}
 	
-	public void ntos(int n) {
+	public static double getDistanceBetweenTwoPoints(int x1, int y1, int x2, int y2) {
+		return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+	}
+	
+	public static void convertNumberToString(int n) {
 		String[] sn1  = {"ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
 				"десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", 
 				"семнадцать", "восемнадцать", "девятнадцать"};
