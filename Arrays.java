@@ -43,7 +43,7 @@ public class Arrays {
 	
 	public static int[] toSwapTwoPartsOfArray(int[] array) {
 		int arrayMiddle = 0;
-		if(array.length%2==0) arrayMiddle = array.length/2;
+		if((array.length&1)==0) arrayMiddle = array.length/2;
 		else arrayMiddle = array.length/2+1;
 		for(int i=0; i<array.length/2; i++) {
 			int temp = array[i];
@@ -88,8 +88,9 @@ public class Arrays {
 		for (int left = 1; left < array.length; left++) {
 			int value = array[left];
 			int i = left - 1;
-			while (value<array[i]) {
+			while (i >= 0 && value<array[i]) {
 				array[i + 1] = array[i];
+				i--;
 			} 
 			array[i + 1] = value;
 		}
