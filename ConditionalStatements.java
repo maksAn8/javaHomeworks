@@ -1,8 +1,8 @@
 
-public class ConditionalStatements { 
+public class ConditionalStatements {
 	
 	public static int getSumOrProduct(int a, int b) {
-		return (a & 1) != 1 ? a*b : a+b;
+		return (a & 1) != 1 ? a * b : a + b;
 	}
 	
 	public static String getQuadrantByCoordinates(int x, int y) {
@@ -50,7 +50,7 @@ public class ConditionalStatements {
 	}
 	
 	public static int getMaxBetweenSumAndProduct(int a, int b, int c) {
-		int sum = a+b+c, multiply = a*b*c;
+		int sum = a + b + c, multiply = a * b * c;
 		if(sum > multiply) {
 			return sum + 3;
 		}
