@@ -65,11 +65,11 @@ public class Cycles {
 		}
 	}
 	
-	public static int getFactorial(int number) {
-		if(number<0)
-			throw new IllegalArgumentException("Factorial can be found only for positive integers and zero!");
+	public static long getFactorial(int number) {
+		if(number<0 || number>20)
+			throw new IllegalArgumentException("Number must be in the range of 0-20!");
 		if(number==0) return 1;
-		int factorial = number;
+		long factorial = number;
 		while(number>2) factorial *= --number;			
 		return factorial;
 	}
