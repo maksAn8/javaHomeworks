@@ -88,7 +88,7 @@ public class Arrays {
 		for (int left = 1; left < array.length; left++) {
 			int value = array[left];
 			int i = left - 1;
-			while (i >= 0 && value<array[i]) {
+			while (value<array[i]) {
 				array[i + 1] = array[i];
 			} 
 			array[i + 1] = value;
