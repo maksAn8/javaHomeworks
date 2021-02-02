@@ -70,7 +70,6 @@ public class Stars {
 					System.out.print("  ");
 				}
 			}
-			
 		}
 		System.out.println();
 	}
@@ -183,6 +182,5 @@ public class Stars {
 		}
 		System.out.println();
 	}
-
 
 }
