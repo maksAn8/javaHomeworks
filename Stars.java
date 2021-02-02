@@ -1,17 +1,5 @@
 
 public class Stars {
-	
-	public static void main(String args[]) {
-		starsFormSquare(7);
-		starsFormEmptySquare(7);
-		starsFormTriangle1(7);
-		starsFormTriangle2(7);
-		starsFormTriangle3(7);
-		starsFormTriangle4(7);
-		starsFormTriangle5(7);
-		starsFormTriangle6(7);
-		starsFormX(7);
-	}
 
 	public static void starsFormSquare(int size) {
 		for(int i = 0; i < size; i++) {
