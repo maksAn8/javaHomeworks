@@ -1,0 +1,49 @@
+
+public class MathHomework {
+	
+	public static double getFlightDistanceDegree(int v, int a) {
+		if(a < 0 || a > 70) {
+			throw new IllegalArgumentException("Incorrect angle");
+		}
+		double distance = 0;
+		try {
+			distance = Math.pow(v, 2) * Math.sin(Math.toRadians(a)) / 9.8;
+		} catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+		}
+		return distance;
+	}
+	
+	public static double getFlightDistanceRad(int v, double a) {
+		if(a < 0 || a > Math.PI / 3) {
+			throw new IllegalArgumentException("Incorrect angle");
+		}
+		double distance = 0;
+		try {
+			distance = Math.pow(v, 2) * Math.sin(a) / 9.8;
+		} catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+		}
+		return distance;
+	}
+	
+	public static double distanceBetweenTwoCars(int car1Speed, int car2Speed, int initialDistance, double time) {
+		if(car1Speed < 0 || car2Speed < 0 || initialDistance < 0 || time < 0) {
+			throw new IllegalArgumentException("Incorrect data!");
+		}
+        return initialDistance + car1Speed * time + car2Speed * time;
+    }
+	
+	public static double findZ(double rad){
+        double numerator = Math.exp(rad + 1) + 2 * Math.exp(rad) * Math.cos(rad);
+        double denominator = rad - Math.exp(rad + 1) * Math.sin(rad);
+        double fraction = Math.abs(Math.cos(rad) / Math.exp(Math.sin(rad)));
+        double Z;
+        if (denominator <= 0 || numerator <= 0) {
+            throw new IllegalArgumentException("Input value is not acceptable.");
+        }
+        Z = 6 * Math.log(Math.sqrt(numerator)) / Math.log(denominator) + fraction;
+        return Z;
+    }
+	
+}
