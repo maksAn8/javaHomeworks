@@ -1,10 +1,10 @@
 
 public class Functions {
 	
-	public static String[] numbers0_19  = {"ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
-			"десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", 
+	public static String[] numbers1_9  = {"один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"};
+	public static String[] numbers11_19 = {"одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", 
 			"семнадцать", "восемнадцать", "девятнадцать"};
-	public static String[] numbers20_90 = {"двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", 
+	public static String[] numbersTens = {"десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", 
 			"восемьдесят", "девяносто"};
 	public static String[] numbersHundreds = {"сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот",
 			"восемьсот", "девятьсот"};
@@ -36,77 +36,85 @@ public class Functions {
 		return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 	}
 	
-	public static void convertNumberToString(int n) {
-		int[] arr = new int[9];
-		int d = 0; 
-		int number = n;
-		if(n == 0) {
-			System.out.println(numbers0_19[0]);
-			return;
+	public static String convertNumberToString(int number) {
+		if(number < 0 || number > 1000) {
+			throw new IllegalArgumentException("Number can be in the range of 0-999");
 		}
-		while(n!=0) {
-			int a = (n % 10);
-			arr[d] = a;
-			n = n / 10;
-			d++;
+		
+		if(number == 0) {
+			return "ноль";
 		}
+		
+		String spelledNumber = "";
+		int digit, counter = 0;
+		boolean isBelow20 = false;
 
 		while(number != 0) {
-			switch(d) {
-			case 4:
-				d--;
-				if(arr[3] == 0) break;
-				if(arr[3] > 4) System.out.print(numbers0_19[arr[3]] + numbersThousands[4] + " ");
-				else System.out.print(numbersThousands[arr[3] - 1] + " ");
-				number = number - arr[3] * 1000;
-			case 3:
-				d--;
-				if(arr[2] == 0) break;
-				System.out.print(numbersHundreds[arr[2] - 1] + " ");
-				number = number - arr[2] * 100;
-			case 2:
-				d--;
-				if(arr[1] == 0) break;
-				if(number != 0 && number < 20) {
-					System.out.println(numbers0_19[number] + " ");
-					number = 0;
-					break;
+			digit = number % 10;
+			number /= 10;
+			if(digit != 0 && counter == 0) {
+				if(number % 10 == 1) {
+					spelledNumber += numbers11_19[digit - 1] + " ";
+					isBelow20 = true;
+				} else {
+					spelledNumber += numbers1_9[digit - 1] + " ";
 				}
-				else {
-					System.out.print(numbers20_90[arr[1] - 2] + " ");
-					number = number - arr[1] * 10;
-					if(arr[0] == 0) break;
-				}
-			case 1:
-				System.out.println(numbers0_19[arr[0]] + " ");
-				number = 0;
+			} else if(digit > 0 && !isBelow20 && counter == 1) {
+				spelledNumber += numbersTens[digit - 1] + " ";	
+			} else if(counter == 2) {
+				spelledNumber += numbersHundreds[digit - 1] + " ";
 			}
-
+			counter++;
 		}
+		
+		String[] temp = spelledNumber.split(" ");
+		spelledNumber = "";
+		for(int i = temp.length - 1; i >= 0; i--) {
+			spelledNumber += temp[i] + " ";
+		}
+		return spelledNumber;
 	}
 	
-	public static void convertStringToNumber(String number) {	
-		if(number == null) {
-			throw new IllegalArgumentException("Number can not be null!");
+	public static int convertStringToNumber(String number) {	
+		if(number == null || number.trim().length() == 0) {
+			throw new IllegalArgumentException("Number can not be empty!");
 		}
-		String lowerCase = number.toLowerCase();
-		number = "";
+		
+		String lowerCase = number.toLowerCase().trim().replaceAll("\\s+", " ");
 		String[] splitNumber = lowerCase.split(" ");
-		switch(splitNumber.length) {
-		case 3:
-			for(int i = 0; i < numbersHundreds.length; i++) {
-				if(splitNumber[0].equals(numbersHundreds[i])) {
-					number += numbersHundreds[i];
+		
+		if(splitNumber[0].equals("ноль")) {
+			return 0;
+		}
+		
+		int convertedNumber = 0;
+		int wordsCounter = splitNumber.length;
+		while(wordsCounter != 0) {
+			for(int i = 0; i < numbers1_9.length && wordsCounter != 0; i++) {
+				if(splitNumber[splitNumber.length - wordsCounter].equals(numbersHundreds[i])) {
+					convertedNumber += (i + 1) * 100;
+					wordsCounter--;
+					break;
+				} else if (splitNumber[splitNumber.length - wordsCounter].equals(numbersTens[i])) {
+					convertedNumber += (i + 1) * 10;
+					wordsCounter--;
+					break;
+				} else if(splitNumber[splitNumber.length - wordsCounter].equals(numbers11_19[i])) {
+					convertedNumber += i + 11;
+					wordsCounter--;
+					break;
+				} else if (splitNumber[splitNumber.length - wordsCounter].equals(numbers1_9[i])) {
+					convertedNumber += i + 1;
+					wordsCounter--;
+					break;
+				} else if(i == 8) {
+					throw new IllegalArgumentException("Incorrect spell!");
 				}
 			}
-			break;
-		case 2:
-			
-			break;
-		case 1:
-			
-			break;
 		}
+		return convertedNumber;
 	}
-
+	
 }
+
+
