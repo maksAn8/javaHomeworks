@@ -1,25 +1,50 @@
 
 public class Arrays {
 	
-	public static void getMinAndMaxElementsOfArray(int[] array) {
+	public static int getMinElementOfArray(int[] array) {
 		if(array == null) {
 			throw new IllegalArgumentException("Array can't be null!");
 		}
-		int minElement, maxElement, indexMin, indexMax;
-		minElement = maxElement = array[0];
-		indexMin = indexMax = 0;
+		return array[getMinElementIndexOfArray(array)];
+	}
+	
+	public static int getMaxElementOfArray(int[] array) {
+		if(array == null) {
+			throw new IllegalArgumentException("Array can't be null!");
+		}
+		return array[getMaxElementIndexOfArray(array)];
+	}
+	
+	public static int getMinElementIndexOfArray(int[] array) {
+		if(array == null) {
+			throw new IllegalArgumentException("Array can't be null!");
+		}
+		int minElement, indexMin;
+		minElement = array[0];
+		indexMin = 0;
 		for(int i = 1; i < array.length; i++) {
 			if(minElement > array[i]) {
 				minElement = array[i];
 				indexMin = i;
-			} else if(maxElement < array[i]) {
+			}
+		}
+		return indexMin;		
+	}
+	
+	public static int getMaxElementIndexOfArray(int[] array) {
+		if(array == null) {
+			throw new IllegalArgumentException("Array can't be null!");
+		}
+		int maxElement, indexMax;
+		maxElement = array[0];
+		indexMax = 0;
+		for(int i = 1; i < array.length; i++) {
+			if(maxElement < array[i]) {
 				maxElement = array[i];
 				indexMax = i;
 			}
 		}
-		System.out.println("Minimal element = " + minElement + ", its index = " + indexMin);
-		System.out.println("Maximal element = " + maxElement + ", its index = " + indexMax);
-		
+		return indexMax;
 	}
 	
 	public static int getSumOfElemetsWithOddIndex(int[] array) {
