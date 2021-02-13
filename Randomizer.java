@@ -14,6 +14,7 @@ public class Randomizer {
 	public void start() {
 		boolean isRunning = true;
 		setUserRangeForRandom();
+		System.out.println("Enter command: generate, help or exit");
 		while(isRunning) {
 			switch(getUserCommand()) {
 				case "generate":
@@ -45,15 +46,26 @@ public class Randomizer {
 	}
 	
 	private int getValidLimit() {
-		while(!scanner.hasNextInt()) {
-			scanner.next();
-			System.out.println("Incorrect limit! Try again...");
+		int limit = 0;
+		boolean isValidLimit = false;
+		while(!isValidLimit) {
+			while(!scanner.hasNextInt()) {
+				scanner.next();
+				System.out.println("Incorrect limit! Try again...");
+			}
+			limit = scanner.nextInt();
+			if (limit < 1 ) {
+				System.out.println("The limit can not be less than 1");
+			} else if(limit > 500) {
+				System.out.println("The limit can not be more than 500");
+			} else {
+				isValidLimit = true;
+			}
 		}
-		return scanner.nextInt();
+		return limit;
 	}
 	
 	private String getUserCommand() {
-		System.out.println("Enter command: generate, help or exit");
 		return scanner.next().toLowerCase();
 	}
 	
@@ -84,13 +96,13 @@ public class Randomizer {
 	}
 	
 	private void reset() {
-		System.out.println("There are no more unique numbers here. Do you want to set a new range? (enter yes or no)");
+		System.out.println("There are no more unique numbers. Do you want to set a new range? (enter yes or no)");
 		userCommand = scanner.next().toLowerCase();
 		if(userCommand.equals("no")) {
 			System.out.println("Application is closed.");
 			System.exit(0);
 		} else if(userCommand.equals("yes")) {
-			uniqueNumbersCounter = 0;
+			uniqueNumbersCounter = lowerLimit = upperLimit = 0;
 			setUserRangeForRandom();
 		}
 	}
@@ -98,6 +110,7 @@ public class Randomizer {
 	private void exit() {
 		System.out.println("Are you sure that you want to quit the app? (enter yes or no)");
 		if(scanner.next().toLowerCase().equals("yes")) {
+			System.out.println("Application is closed.");
 			System.exit(0);
 		}
 	}
