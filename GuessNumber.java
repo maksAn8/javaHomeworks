@@ -36,28 +36,7 @@ public class GuessNumber {
 		generateNumber();
 		while(attemptsLeft != 0) {
 			userGuess = getUserGuess();
-			if(userGuess == generatedNumber) {
-				System.out.println(String.format("Congratulations! You guessed the number in %s attempt(s)", ++userTry));
-				exit();
-			} else if(userTry == 0) {
-				userTry++;
-				difference = Math.abs(generatedNumber - userGuess);
-				System.out.println(String.format("Try again! %s attempt(s) left", --attemptsLeft));
-			} else if(attemptsLeft == 1) {
-				attemptsLeft--;
-				System.out.println("Game over!");
-			} else if(Math.abs(generatedNumber - userGuess) < difference) {
-				userTry++;
-				difference = Math.abs(generatedNumber - userGuess);
-				System.out.println(String.format("Wrong! But you are getting warmer! %s attempt(s) left", --attemptsLeft));
-			} else if(Math.abs(generatedNumber - userGuess) > difference) {
-				userTry++;
-				difference = Math.abs(generatedNumber - userGuess);
-				System.out.println(String.format("Wrong! You are getting colder! %s attempt(s) left", --attemptsLeft));
-			} else if(Math.abs(generatedNumber - userGuess) == difference) {
-				userTry++;
-				System.out.println(String.format("Try again! %s attempt(s) left", --attemptsLeft));
-			} 
+			compareNumbers(); 
 		}
 		System.out.println("It was the number " + generatedNumber);
 		exit();
@@ -90,6 +69,31 @@ public class GuessNumber {
 			}
 		}
 		return userGuess;
+	}
+	
+	private void compareNumbers() {
+		if(userGuess == generatedNumber) {
+			System.out.println(String.format("Congratulations! You guessed the number in %s attempt(s)", ++userTry));
+			exit();
+		} else if(userTry == 0) {
+			userTry++;
+			difference = Math.abs(generatedNumber - userGuess);
+			System.out.println(String.format("Try again! %s attempt(s) left", --attemptsLeft));
+		} else if(attemptsLeft == 1) {
+			attemptsLeft--;
+			System.out.println("Game over!");
+		} else if(Math.abs(generatedNumber - userGuess) < difference) {
+			userTry++;
+			difference = Math.abs(generatedNumber - userGuess);
+			System.out.println(String.format("Wrong! But you are getting warmer! %s attempt(s) left", --attemptsLeft));
+		} else if(Math.abs(generatedNumber - userGuess) > difference) {
+			userTry++;
+			difference = Math.abs(generatedNumber - userGuess);
+			System.out.println(String.format("Wrong! You are getting colder! %s attempt(s) left", --attemptsLeft));
+		} else if(Math.abs(generatedNumber - userGuess) == difference) {
+			userTry++;
+			System.out.println(String.format("Try again! %s attempt(s) left", --attemptsLeft));
+		}
 	}
 	
 	private boolean isValidSettings(int value, int lowerLimit, int upperLimit) {
