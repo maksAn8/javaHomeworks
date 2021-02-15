@@ -1,13 +1,14 @@
 
 public class Cycles {
 	
-	public static void getEvenNumbersSumAndQuantity() {
+	
+	public static String getEvenNumbersSumAndQuantity() {
 		int numCounter = 0, numSum = 0, upperLimit = 98, lowerLimit = 2;
 		for(int i = lowerLimit; i <= upperLimit; i += 2) {
 			numCounter++;
 			numSum += i;
 		}
-		System.out.println("Even numbers quantity = " + numCounter + ", their sum = " + numSum);	
+		return "Even numbers quantity = " + numCounter + ", their sum = " + numSum;	
 	}
 	
 	public static boolean isPrimeNumber(int number) {
@@ -22,32 +23,31 @@ public class Cycles {
 		return true;	
 	}
 	
-	public static void getSqrtWithPrecisionToInteger(int number) {
+	public static String getSqrtWithPrecisionToInteger(int number) {
 		
 		if(number < 0) {
 			throw new IllegalArgumentException("Number must be in the range of 0-2147483647");
 		}
 			
 		if(number < 2) {
-			System.out.println("SQRT = " + number);
-			return;
+			return "SQRT = " + number;
 		}
 		
 		if(number >= 2147395600) {
-			System.out.println("SQRT = 46340");
-			return;
+			return "SQRT = 46340";
 		}
+		
+		String result = "";
 			
 		//selection method
 		for(int i = 1; i <= number / 2; i++) {
 			if(i * i <= number && (i + 1) * (i + 1) > number) {
-				System.out.println("SQRT = " + i);
+				result = "Selection method: SQRT = " + i;
 				break;
 			}
 		}
 		
 		//binary search
-		System.out.println("Binary search:");
 		int sqrt, leftBoundary = 1, rightBoundary = number / 2;
 		
 		if(rightBoundary > 46340) {
@@ -57,19 +57,20 @@ public class Cycles {
 		while(leftBoundary <= rightBoundary) {
 			sqrt = (leftBoundary + rightBoundary) / 2;
 			if(sqrt * sqrt == number) {
-				System.out.println("SQRT = " + sqrt);
-				return;
+				result += ". Binary search: SQRT = " + sqrt;
+				break;
 			} else if(sqrt * sqrt > number) {
 				rightBoundary = sqrt;
 			} else {
 				if(++sqrt * sqrt > number) {
-					System.out.println("SQRT = " + --sqrt);
-					return;
+					result += ". Binary search: SQRT = " + --sqrt;
+					break;
 				} else {
 					leftBoundary = sqrt;
 				}
 			}
 		}
+		return result;
 	}
 	
 	public static long getFactorial(int number) {
