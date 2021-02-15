@@ -8,7 +8,7 @@ public class Functions {
 			"восемьдесят", "девяносто"};
 	public static String[] numbersHundreds = {"сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот",
 			"восемьсот", "девятьсот"};
-	public static String[] numbersThousands = {"одна тысяча", "две тысячи", "три тысячи", "четыре тысячи", " тысяч"};
+	
 	
 	public static String getDayNameByNumber(int dayNumber) {
 		if(dayNumber < 1 || dayNumber > 7) {
@@ -37,7 +37,7 @@ public class Functions {
 	}
 	
 	public static String convertNumberToString(int number) {
-		if(number < 0 || number > 1000) {
+		if(number < 0 || number > 999) {
 			throw new IllegalArgumentException("Number can be in the range of 0-999");
 		}
 		
@@ -72,7 +72,7 @@ public class Functions {
 		for(int i = temp.length - 1; i >= 0; i--) {
 			spelledNumber += temp[i] + " ";
 		}
-		return spelledNumber;
+		return spelledNumber.trim();
 	}
 	
 	public static int convertStringToNumber(String number) {	
