@@ -3,23 +3,6 @@ import java.util.regex.Pattern;
 
 public class StringsHomework {
 	
-	public static void main(String args[]) {
-		String[] words = new String[] {"qwerty", "asdf", "zxcv"};
-		StringsHomework xz = new StringsHomework();
-		xz.outputSymbols();
-		System.out.println(xz.convertNumberToString(1234));
-		System.out.println(xz.convertNumberToString(123.31231));
-		System.out.println(xz.convertStringToFloatPointNumber("123.31231"));
-		System.out.println(xz.convertStringToNumber("123	"));
-		System.out.println(xz.getShortestWordLength(" bla-bl, helasj. asf, afs"));
-		xz.replace3LastSymbols(words, 4);
-		System.out.println(java.util.Arrays.toString(words));
-		xz.addSpaces(",,,,qwerty,qwerty. qwerty!werwer!!!");
-		System.out.println(xz.getUniqueSymbols("asdfasdfasdf...[]"));
-		System.out.println(xz.deleteSubstring("qwertyuiop", 3, 5));
-		System.out.println(xz.reverseString("1234567890"));
-	}
-	
 	public void outputSymbols() {
 		String lowerCase = "";
 		String numbers = "";
