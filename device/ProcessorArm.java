@@ -11,15 +11,15 @@ public class ProcessorArm extends Processor {
     }
 
     @Override
-    protected String dataProcess(String data) {
+    public String dataProcess(String data) {
         if(data == null) {
             return null;
         }
-        return data.toUpperCase(Locale.ROOT).getBytes(StandardCharsets.UTF_8).toString();
+        return data.toUpperCase(Locale.ROOT);
     }
 
     @Override
-    long dataProcess(long data) {
+    public long dataProcess(long data) {
         return data / 100;
     }
 

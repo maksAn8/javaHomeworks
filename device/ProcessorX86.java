@@ -8,7 +8,7 @@ public class ProcessorX86 extends Processor {
     }
 
     @Override
-    protected String dataProcess(String data) {
+    public String dataProcess(String data) {
         if(data == null) {
             return null;
         }
@@ -16,16 +16,12 @@ public class ProcessorX86 extends Processor {
     }
 
     @Override
-    protected long dataProcess(long data) {
-        try {
-            return ++data;
-        } catch (Exception e) {
-            return 0;
-        }
+    public long dataProcess(long data) {
+        return ++data;
     }
 
     @Override
-    protected String getArchitecture() {
+    public String getArchitecture() {
         return architecture;
     }
 }

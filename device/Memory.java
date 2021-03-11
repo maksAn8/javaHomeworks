@@ -1,15 +1,15 @@
 package homeworks.device;
 
 public class Memory {
-    protected String[] memoryCell;
+    public String[] memoryCell;
     private int emptyCellIndex;
 
-    Memory(int memorySize) {
+    public Memory(int memorySize) {
         emptyCellIndex = 0;
         memoryCell = new String[memorySize];
     }
 
-    protected String readLast() {
+    public String readLast() {
         if(memoryCell[0] == null) {
             return "There are no data in the memory";
         } else {
@@ -17,11 +17,14 @@ public class Memory {
         }
     }
 
-    protected void removeLast() {
+    public void removeLast() {
+        if (emptyCellIndex == 0) {
+            throw new ArrayIndexOutOfBoundsException("There are nothing to remove!");
+        }
         memoryCell[emptyCellIndex-- - 1] = null;
     }
 
-    protected boolean save(String data) {
+    public boolean save(String data) {
         if (emptyCellIndex == memoryCell.length || data == null || data.strip().length() == 0) {
             return false;
         } else {
@@ -30,11 +33,11 @@ public class Memory {
         }
     }
 
-    protected int getEmptyCellIndex() {
+    public int getEmptyCellIndex() {
         return emptyCellIndex;
     }
 
-    protected MemoryInfo getMemoryInfo() {
+    public MemoryInfo getMemoryInfo() {
         return new MemoryInfo();
     }
 

@@ -3,11 +3,16 @@ package homeworks.device;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static homeworks.device.Constant.RND_SCALE;
+import static homeworks.device.Constant.*;
 
 public class Device {
     private Processor processor;
     private Memory memory;
+
+    public Device() {
+        createProc("X86", DEF_FREQ, DEF_CACHE, DEF_CAP);
+        memory = new Memory(DEF_MEM_SIZE);
+    }
 
     public Device(String procArch, double f, int c, int bitC, int memSize) {
         createProc(procArch, f, c, bitC);
@@ -21,10 +26,13 @@ public class Device {
     }
 
     public void save(String[] data) {
+        if(data == null) {
+            throw new IllegalArgumentException("Data can not be null!");
+        }
         for(int i = 0; i < data.length; i++) {
             if(memory.save(data[i]));
             else if(memory.getEmptyCellIndex() == memory.memoryCell.length){
-                System.out.println("Memory is full! " + --i + " elements were saved.");
+                System.out.println("Memory is full!");
                 break;
             }
         }

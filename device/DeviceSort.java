@@ -2,7 +2,7 @@ package homeworks.device;
 
 import java.util.Comparator;
 
-class DeviceSort { //my hands grow from my ass so I can't create separate class with all my sorts ;(
+class DeviceSort {
 //    @Override
 //    public int compare(Device o1, Device o2) {
 //        return 0;

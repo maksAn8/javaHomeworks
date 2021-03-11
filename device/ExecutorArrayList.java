@@ -1,5 +1,7 @@
 package homeworks.device;
 
+import java.util.Collection;
+
 public class ExecutorArrayList implements Executable {
     @Override
     public void write(Device device) {
@@ -15,5 +17,10 @@ public class ExecutorArrayList implements Executable {
         }
         return devices;
     }
+
+//    @Override
+//    public Collection<Device> getCollection() {
+//        return Model.devicesArrList;
+//    }
 
 }

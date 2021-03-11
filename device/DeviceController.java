@@ -187,14 +187,10 @@ public class DeviceController {
             switch (cmd) {
                 case CMD_ARCH:
                     if(isFilter) {
-                        printDevices(new DeviceFilter().filterDevicesByProc(executor, scanner.nextLine().strip()));
+                        printDevices(new DeviceFilter().filterDevicesByProc(scanner.nextLine().strip()));
                         break;
                     }
                 case CMD_BIT:
-                    if(isFilter) {
-                        printDevices(new DeviceFilter().filterDevicesByProc(scanner.nextLine().strip(), executor));
-                        break;
-                    }
                 case CMD_FREQ:
                 case CMD_CACHE:
                 case CMD_MEM_SIZE:
@@ -243,16 +239,19 @@ public class DeviceController {
         double filterParam = getFilterParam();
         switch (cmd) {
             case CMD_FREQ:
-                printDevices(new DeviceFilter().filterDevicesByProc(executor, filterParam, isMore));
+                printDevices(new DeviceFilter().filterDevicesByProc(filterParam, isMore));
                 break;
             case CMD_CACHE:
-                printDevices(new DeviceFilter().filterDevicesByProc(executor, (int) filterParam, isMore));
+                printDevices(new DeviceFilter().filterDevicesByProc((int) filterParam, isMore));
+                break;
+            case CMD_BIT:
+                printDevices(new DeviceFilter().filterDevicesByProc((short) filterParam));
                 break;
             case CMD_MEM_SIZE:
-                printDevices(new DeviceFilter().filterDevicesByMemory(executor, (int) filterParam, isMore));
+                printDevices(new DeviceFilter().filterDevicesByMemory((int) filterParam, isMore));
                 break;
             case CMD_OCC_MEM:
-                printDevices(new DeviceFilter().filterDevicesByMemory(executor, filterParam, isMore));
+                printDevices(new DeviceFilter().filterDevicesByMemory(filterParam, isMore));
                 break;
         }
     }
