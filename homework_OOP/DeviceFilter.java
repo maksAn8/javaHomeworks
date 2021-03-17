@@ -19,13 +19,13 @@ public class DeviceFilter {
     public List<Device> filterDevicesByProc(short bitParam) {
         List<Device> devicesList = Model.devicesArrList.stream()
                 .filter(device -> device.getProcessor().getBitCapacity() == bitParam).collect(Collectors.toList());
-//        if(validateFilterParam(bitParam)) {
+
 //            for (Device d : list.read()) {
 //                if (d.getProcessor().getBitCapacity() == filterParam) {
 //                    devicesList.add(d);
 //                }
 //            }
-//        }
+
         return devicesList;
     }
 
