@@ -2,7 +2,6 @@ package homeworks.streams;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import static homeworks.streams.StudentsData.*;
 
 public class Streams {
     public List<Student> students;
@@ -109,19 +108,7 @@ public class Streams {
         list.add(new Student( 10,"Славик", "Якименко", 1996, "ул. Сержанта 25", "8888888888", "Сварка", "2-й", "СВ-12"));
         list.add(new Student( 11,"Андрей", "Шалёпа", 1996, "ул. Ефрейтора 85", "9999999999", "Сварка", "3-й", "СВ-13"));
         list.add(new Student( 12,"Максим", "Анацкий", 1997, "ул. НЕПОНЯТНОКАКАЯ 50", "0000000000", "Информационных технологий", "4-й", "КИТ-47"));
-//
-//        list.add(student1);
-//        list.add(student2);
-//        list.add(student3);
-//        list.add(student4);
-//        list.add(student5);
-//        list.add(student6);
-//        list.add(student7);
-//        list.add(student8);
-//        list.add(student9);
-//        list.add(student10);
-//        list.add(student11);
-//        list.add(student12);
+
         return list;
     }
 }
